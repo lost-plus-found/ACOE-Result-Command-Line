@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "Please use like this => auresult REGISTER PASSWORD"
+	exit 1
+fi
+
+REGISTER=$1
+PASSWORD=`echo -n $2 | openssl dgst -sha512`
+LEN=`expr ${#PASSWORD} - 9`
+PASSWORD=${PASSWORD:9:$LEN}
+
+curl -s -c .c0.txt --data "user=$REGISTER&password=&p=$PASSWORD" https://acoe.annauniv.edu/student/process_login.php
+curl -s -b .c0.txt https://acoe.annauniv.edu/student/result.php > .temp
+
+python display.py
+rm .c0.txt .temp
