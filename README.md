@@ -6,6 +6,8 @@
 
 $ `sudo apt update`
 
+$ `sudo apt -y install python-pip`
+
 $ `sudo pip install BeautifulSoup4`
 
 $ `sudo apt install python-prettytable`
