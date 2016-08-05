@@ -10,6 +10,8 @@ $ `sudo apt -y install python-pip`
 
 $ `sudo pip install BeautifulSoup4`
 
+$ `sudo pip install lxml`
+
 $ `sudo apt install python-prettytable`
 
 ## Installing from this repository
