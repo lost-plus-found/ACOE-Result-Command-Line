@@ -23,7 +23,9 @@ or download a source code: [auresult](https://github.com/prabhakaran9397/auresul
 ### Running the command
 
 $ `./auresult`
+
 `Register Number: 201XXXXXXX`
+
 `Password: `
 
 ![Screenshot](./assets/SS.png "Screenshot 1")
