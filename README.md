@@ -1,28 +1,31 @@
 # ACOE Result on command line (View Result only)
-
-# Installation
+View ACOE Result from anywhere in the command line
 
 ## Preinstallations
 
-$ `sudo apt update`
+$ `sudo pip install beautifulsoup4`
 
 $ `sudo apt install python-prettytable`
 
-## Installing from this repository
+## Installing
 
 To download this repository, you may either clone via git:
 
 $ `git clone https://github.com/prabhakaran9397/auresult/`
 
+or download a source code: [auresult](https://github.com/prabhakaran9397/auresult/archive/master.zip).
+
 $ `cd auresult`
 
-$ `chmod 777 auresult`
+$ `sudo make install`
 
-or download a source code: [auresult](https://github.com/prabhakaran9397/auresult/archive/master.zip).
+## Uninstalling
+
+$ `sudo make uninstall`
 
 ### Running the command
 
-$ `./auresult`
+$ `auresult`
 `Register Number: 201XXXXXXX`
 `Password: `
 
