@@ -3,7 +3,9 @@ View ACOE Result from anywhere in the command line
 
 ## Preinstallations
 
-$ `sudo pip install beautifulsoup4`
+$ `sudo apt -y install python-pip`
+
+$ `sudo pip install BeautifulSoup4`
 
 $ `sudo apt install python-prettytable`
 
@@ -26,7 +28,9 @@ $ `sudo make uninstall`
 ### Running the command
 
 $ `auresult`
+
 `Register Number: 201XXXXXXX`
+
 `Password: `
 
 ![Screenshot](./assets/SS.png "Screenshot 1")
