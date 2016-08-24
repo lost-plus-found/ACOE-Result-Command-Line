@@ -4,6 +4,7 @@ UNAME_S:=$(shell uname -s)
 .PHONY: install uninstall
 
 install:
+	bash install
 	install -m755 -d $(BINDIR)
 	@if [ "$(UNAME_S)" = "Linux" ]; then\
 		install -m755 -t $(BINDIR) auresult; \
@@ -14,4 +15,4 @@ install:
 
 uninstall:
 	rm -f $(BINDIR)/auresult
-
+	rm auresult

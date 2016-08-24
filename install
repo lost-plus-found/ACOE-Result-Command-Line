@@ -1,0 +1,14 @@
+cp source auresult
+
+echo "Hi, this is a one time installation"
+echo ""
+echo -n "Register Number: "
+read R
+echo -n "Password: "
+read -s P
+echo ""
+
+sed -i "0,/XXXXXX/s/XXXXXX/$R/" auresult
+sed -i "0,/YYYYYY/s/YYYYYY/$P/" auresult
+
+echo "Installing..."
