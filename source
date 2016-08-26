@@ -7,6 +7,7 @@ then
 	read REGISTER
 	echo -n "Password: "
 	read -s P
+	echo
 else
 	REGISTER="XXXXXX"
 	P="YYYYYY"
@@ -20,16 +21,20 @@ then
         read REGISTER
         echo -n "Password: "
         read -s P
+	echo
 fi
 
 PASSWORD=`echo -n $P | openssl dgst -sha512`
 LEN=`expr ${#PASSWORD} - 9`
 PASSWORD=${PASSWORD:9:$LEN}
 
+echo "Fetching result..."
+
 curl -s -c .c0.txt --data "user=$REGISTER&password=&p=$PASSWORD" https://acoe.annauniv.edu/student/process_login.php
 curl -s -b .c0.txt https://acoe.annauniv.edu/student/result.php > .temp
 
-echo ""
+echo "Almost Done..."
+echo 
 echo '
 from bs4 import BeautifulSoup
 from prettytable import PrettyTable
