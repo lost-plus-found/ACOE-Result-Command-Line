@@ -13,21 +13,37 @@ $ `sudo apt install python-prettytable`
 
 To download this repository, you may either clone via git:
 
-$ `git clone https://github.com/prabhakaran9397/auresult/`
+$ `cd ~`
 
-or download a source code: [auresult](https://github.com/prabhakaran9397/auresult/archive/master.zip).
+$ `git clone https://github.com/lost-plus-found/ACOE-Result-Command-Line`
 
-$ `cd auresult`
+or download a source code: [ACOE-Result-Command-Line](https://github.com/lost-plus-found/ACOE-Result-Command-Line/archive/master.zip).
+
+$ `cd ~/ACOE-Result-Command-Line`
 
 $ `sudo make install`
 
+This is a one time installation
+
+`Register Number: 201XXXXXXX`
+
+`Password: `
+
 ## Uninstalling
+
+$ `cd ~/ACOE-Result-Command-Line`
 
 $ `sudo make uninstall`
 
-### Running the command
+### Running the command from anywhere
+
+#### Checking your result
 
 $ `auresult`
+
+#### Checking others result
+
+$ `auresult -n`
 
 `Register Number: 201XXXXXXX`
 
