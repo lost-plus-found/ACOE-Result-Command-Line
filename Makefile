@@ -5,12 +5,12 @@ UNAME_S:=$(shell uname -s)
 
 install:
 	bash install
-	install -m755 -d $(BINDIR)
+	install -m775 -d $(BINDIR)
 	@if [ "$(UNAME_S)" = "Linux" ]; then\
-		install -m755 -t $(BINDIR) auresult; \
+		install -m775 -t $(BINDIR) auresult; \
 	fi
 	@if [ "$(UNAME_S)" = "Darwin" ]; then\
-		install -m755  auresult $(BINDIR); \
+		install -m775  auresult $(BINDIR); \
 	fi
 
 uninstall:
