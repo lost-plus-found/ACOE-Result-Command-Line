@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if [ "$1" = "-n" ]
-then
+if [ "$1" = "-n" ]; then
 	echo ""
 	echo -n "Register Number: "
 	read REGISTER
@@ -13,8 +12,7 @@ else
 	P="YYYYYY"
 fi
 
-if [ "$REGISTER" = "XXXXXX" ]
-then
+if [ "$REGISTER" = "XXXXXX" ]; then
 	echo "Hey, Please install properly to stop seeing this message!"
 	echo ""
         echo -n "Register Number: "
@@ -33,7 +31,6 @@ echo "Fetching result..."
 curl -s -c .c0.txt --data "user=$REGISTER&password=&p=$PASSWORD" https://acoe.annauniv.edu/student/process_login.php
 curl -s -b .c0.txt https://acoe.annauniv.edu/student/result.php > .temp
 
-echo "Almost Done..."
 echo 
 echo '
 from bs4 import BeautifulSoup
