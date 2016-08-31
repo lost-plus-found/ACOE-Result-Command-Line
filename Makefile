@@ -19,7 +19,7 @@ uninstall:
 
 update:
 	rm -f $(BINDIR)/auresult
-	rm auresult
+	rm -f auresult
 	git pull origin master
 	bash install
 	install -m775 -d $(BINDIR)
