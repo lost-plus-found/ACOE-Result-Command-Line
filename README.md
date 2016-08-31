@@ -29,6 +29,12 @@ This is a one time installation
 
 `Password: `
 
+## Updating
+
+$ `cd ~/ACOE-Result-Command-Line`
+
+$ `sudo make update`
+
 ## Uninstalling
 
 $ `cd ~/ACOE-Result-Command-Line`
