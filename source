@@ -7,24 +7,21 @@ if [ "$1" = "-n" ]; then
 	echo -n "Password: "
 	read -s P
 	echo
+	PASSWORD=`echo -n $P | openssl dgst -sha512`
+	LEN=`expr ${#PASSWORD} - 9`
+	PASSWORD=${PASSWORD:9:$LEN}
 else
 	REGISTER="XXXXXX"
-	P="YYYYYY"
+	PASSWORD="YYYYYY"
 fi
 
 if [ "$REGISTER" = "XXXXXX" ]; then
-	echo "Hey, Please install properly to stop seeing this message!"
-	echo ""
-        echo -n "Register Number: "
-        read REGISTER
-        echo -n "Password: "
-        read -s P
+	echo "Hey, Please install properly to stop seeing this message! Execute the following Command"
+	echo "cd ~/ACOE-Result-Command-Line && sudo make install"
 	echo
+	echo "To check the result manually, execute the following command"
+	echo "auresult -n"
 fi
-
-PASSWORD=`echo -n $P | openssl dgst -sha512`
-LEN=`expr ${#PASSWORD} - 9`
-PASSWORD=${PASSWORD:9:$LEN}
 
 echo "Fetching result..."
 
