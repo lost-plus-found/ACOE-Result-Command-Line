@@ -16,12 +16,12 @@ for filename in os.listdir(in_path):
         subprocess.call("pdftohtml "+ in_file + ' ' + out_file + " >/dev/null", shell=True)
 
 pattern = re.compile('[A-Z]{2}[0-9]{4}')
-with open('Subject_list.csv', 'wb') as f:
+with open('Subject_list.csv', 'w') as f:
     fieldnames = ['subject_code', 'credits']
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     for filename in os.listdir(out_path):
         if filename.endswith('s.html'):
-            htmlObj = open(out_path+filename, 'rb')
+            htmlObj = open(out_path+filename, 'r')
             text = htmlObj.read()
             l = text.find('name=9')
             q = pattern.findall(text,0,l)
@@ -36,6 +36,6 @@ with open('Subject_list.csv', 'wb') as f:
                     credits.append(j)
                     writer.writerow({'subject_code': q[len(credits)-1], 'credits' : j })
             htmlObj.close()
-            print len(credits)
+            print(len(credits))
 
     f.close()
