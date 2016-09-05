@@ -23,13 +23,12 @@ if [ "$REGISTER" = "XXXXXX" ]; then
 	echo "auresult -n"
 fi
 
-echo "Fetching result..."
+echo "Please be patient..."
 
-curl -s -c .c0.txt --data "user=$REGISTER&password=&p=$PASSWORD" https://acoe.annauniv.edu/student/process_login.php
-curl -s -b .c0.txt https://acoe.annauniv.edu/student/result.php > .temp
-
-echo 
-echo '
+if curl --connect-timeout 10 -c .c0.txt -s --data "user=$REGISTER&password=&p=$PASSWORD" https://acoe.annauniv.edu/student/process_login.php; then
+	curl -s -b .c0.txt https://acoe.annauniv.edu/student/result.php > .temp
+	echo 
+	echo '
 from bs4 import BeautifulSoup
 from prettytable import PrettyTable
 
@@ -50,5 +49,9 @@ for result in results:
                 print "\n"
                 i+=1
 ' > .display.py
-python .display.py
-rm .display.py .c0.txt .temp
+	python .display.py
+	rm .display.py .c0.txt .temp
+else
+	echo
+	echo "ACOE server is down! Try after sometime"
+fi
