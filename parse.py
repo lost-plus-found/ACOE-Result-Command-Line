@@ -1,9 +1,9 @@
-#! python3
+#!/usr/bin/python3
+
 import PyPDF2, os
 import subprocess
 import re
 import csv
-
 
 in_path = './curriculam/'
 out_path = './pdftohtml/'
