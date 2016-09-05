@@ -1,5 +1,4 @@
 #!/bin/bash
-cp source auresult
 
 echo "Hi, this is a one time installation"
 echo ""
@@ -13,10 +12,13 @@ P=`echo -n $P | openssl dgst -sha512`
 LEN=`expr ${#P} - 9`
 P=${P:9:$LEN}
 
-#ACOE site is down, need to be updated#
-#curl -s --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php
-
-sed -i "0,/XXXXXX/s/XXXXXX/$R/" auresult
-sed -i "0,/YYYYYY/s/YYYYYY/$P/" auresult
-
-echo "Installing..."
+if curl --connect-timeout 10 -s --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php; then
+	cp source auresult
+	sed -i "0,/XXXXXX/s/XXXXXX/$R/" auresult
+	sed -i "0,/YYYYYY/s/YYYYYY/$P/" auresult
+	echo "Installing..."
+else
+	echo
+	echo "Installation failed! 😢 "
+	echo "Some problem with ACOE server, try to install after sometime"
+fi
