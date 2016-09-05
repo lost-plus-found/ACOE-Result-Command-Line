@@ -31,7 +31,7 @@ with open('Subject_list.csv', 'wb') as f:
             credits=[]
             for i,j in zip(text2,text2[5:]):
                 i = i.strip('<br/>')
-                j = j.strip('<br/>')
+                j = j.strip('<br/>').strip('&#160;')
                 if pattern.search(i) is not None:
                     credits.append(j)
                     writer.writerow({'subject_code': q[len(credits)-1], 'credits' : j })
