@@ -1,24 +1,32 @@
 #!/bin/bash
 
 echo "Hi, this is a one time installation"
-echo ""
+echo
 echo -n "Register Number: "
 read R
 echo -n "Password: "
 read -s P
 echo
-
 P=`echo -n $P | openssl dgst -sha512`
 LEN=`expr ${#P} - 9`
 P=${P:9:$LEN}
 
-if curl --connect-timeout 10 -s --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php; then
-	cp source auresult
-	sed -i "0,/XXXXXX/s/XXXXXX/$R/" auresult
-	sed -i "0,/YYYYYY/s/YYYYYY/$P/" auresult
-	echo "Installing..."
-else
+while [ "$(curl -s --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php)" != "" ]; do
 	echo
 	echo "Installation failed! 😢 "
-	echo "Some problem with ACOE server, try to install after sometime"
-fi
+	echo "Invalid Register Number or Invalid Password"
+	echo
+	echo -n "Register Number: "
+        read R
+        echo -n "Password: "
+        read -s P
+        echo
+        P=`echo -n $P | openssl dgst -sha512`
+        LEN=`expr ${#P} - 9`
+        P=${P:9:$LEN}
+done
+
+cp source auresult
+sed -i "0,/XXXXXX/s/XXXXXX/$R/" auresult
+sed -i "0,/YYYYYY/s/YYYYYY/$P/" auresult
+echo "Installing..."
