@@ -15,7 +15,8 @@ if curl -s --connect-timeout 10 --data "user=$R&password=&p=$P" https://acoe.ann
         echo "Server is fine!"
 else
 	echo "Server is not responding, Please try after sometime"
-        exit 0
+	echo 
+        exit 1
 fi
 
 while [ "$(curl -s --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php)" != "" ]; do
