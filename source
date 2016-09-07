@@ -23,6 +23,13 @@ if [ "$REGISTER" = "XXXXXX" ]; then
 	echo "auresult -n"
 fi
 
+if curl -s --connect-timeout 10 --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php > /dev/null; then
+        echo "Server is fine!"
+else
+        echo "Server is not responding, Please try after sometime"
+        exit 0
+fi
+
 echo "Please be patient..."
 
 curl -c .c0.txt -s --data "user=$REGISTER&password=&p=$PASSWORD" https://acoe.annauniv.edu/student/process_login.php

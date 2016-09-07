@@ -11,6 +11,13 @@ P=`echo -n $P | openssl dgst -sha512`
 LEN=`expr ${#P} - 9`
 P=${P:9:$LEN}
 
+if curl -s --connect-timeout 10 --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php > /dev/null; then
+        echo "Server is fine!"
+else
+	echo "Server is not responding, Please try after sometime"
+        exit 0
+fi
+
 while [ "$(curl -s --data "user=$R&password=&p=$P" https://acoe.annauniv.edu/student/process_login.php)" != "" ]; do
 	echo
 	echo "Installation failed! 😢 "
