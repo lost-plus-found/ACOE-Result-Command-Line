@@ -1,5 +1,5 @@
-# ACOE Result on command line (View Result only)
-View ACOE Result from anywhere in the command line
+# ACOE Result Command Line Interface
+View ACOE Result from anywhere in the command line and <b>download the pdf</b> (<i>new feature</i>)
 
 ## Preinstallations
 
