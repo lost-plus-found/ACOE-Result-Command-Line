@@ -56,5 +56,25 @@ for result in results:
                 print "\n"
                 i+=1
 ' > .display.py
-	python .display.py
-	rm .display.py .c0.txt .temp
+python .display.py
+
+echo "Enter 1 to download Regular Result; 2 to download Arrear Result; 3 to download Revaluation Result; any other to exit"
+echo -n "> "
+read pdfchoice
+
+if [ "$pdfchoice" = "1" ]; then
+	pdfname="_Regular_Result.pdf"
+	curl -s -o "$REGISTER$pdfname" -b .c0.txt https://acoe.annauniv.edu/student/result_print.php
+	echo "Downloaded as $REGISTER$pdfname"
+elif [ "$pdfchoice" = "2" ]; then
+	pdfname="_Arrear_Result.pdf"
+        curl -s -o "$REGISTER$pdfname" -b .c0.txt https://acoe.annauniv.edu/student/arr_print.php
+	echo "Downloaded as $REGISTER$pdfname"
+elif [ "$pdfchoice" = "3" ]; then
+	pdfname="_Reval_Result.pdf"
+        curl -s -o "$REGISTER$pdfname" -b .c0.txt https://acoe.annauniv.edu/student/reval_print.php
+	echo "Downloaded as $REGISTER$pdfname"
+else
+	echo 'exiting'
+fi
+rm .display.py .c0.txt .temp
