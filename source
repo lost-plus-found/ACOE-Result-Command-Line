@@ -38,23 +38,52 @@ echo
 echo '
 from bs4 import BeautifulSoup
 from prettytable import PrettyTable
+import csv, sys, urllib2
 
-page = open("./.temp", "r").read()
-soup = BeautifulSoup(page, "html.parser")
-results = soup.findAll("table")
+grades = {"S":10.0, "A":9.0, "B":8.0, "C":7.0, "D":6.0, "E":5.0, "U":0.0, "W":0.0}
+credits = {}
+result_arr = {}
 
-res = ["REGULAR", "ARREAR", "REVALUATION"]
-i = 0
-for result in results:
-        if result.findParent("table") is None:
-                print "\t\t\t\t%s" % res[i]
-                t = PrettyTable(["Subject Code", "Subject Name", "Grade"])
-                for tr in result.find_all("tr")[1:]:
-                        tds = tr.find_all("td")
-                        t.add_row([tds[0].text, tds[1].text, tds[2].text])
-                print t
-                print "\n"
-                i+=1
+def get_result():
+	page = open("./.temp", "r").read()
+	soup = BeautifulSoup(page, "html.parser")
+	results = soup.findAll("table")
+
+	res = ["REGULAR", "ARREAR", "REVALUATION"]
+	i = 0
+	for result in results:
+	        if result.findParent("table") is None:
+	                print "\t\t\t\t%s" % res[i]
+	                t = PrettyTable(["Subject Code", "Subject Name", "Grade"])
+	                for tr in result.find_all("tr")[1:]:
+	                        tds = tr.find_all("td")
+	                        t.add_row([tds[0].text, tds[1].text, tds[2].text])
+	                        result_arr[tds[0].text] = tds[2].text
+	                print t
+	                print "\n"
+	                i+=1
+
+def credit_set():
+    url = urllib2.urlopen("https://gist.githubusercontent.com/prabhakaran9397/3f100b326c96aa4a60187ee82fc10e06/raw/9f01a3f5af9e436b3780b830c5204d543d5209f1/credits.txt")
+    content = url.read()
+    credits_file  = BeautifulSoup(content, "html.parser").string
+    credits_bundle = map(str, credits_file.split("\n"))
+    for i in  credits_bundle:
+        if len(i) > 0:
+            row = map(str, i.split())
+            credits.setdefault(row[0], row[1])
+
+if __name__ == "__main__":
+    credit_set()
+    get_result()
+    total_credits = 0.0
+    total_acc = 0.0
+    for sub_code in result_arr:
+        total_credits += float(credits[sub_code])
+        total_acc += float(credits[sub_code])*float(grades[result_arr[sub_code]])
+    gpa = total_acc/total_credits
+    print "========================> GPA:", gpa , "<========================\n"
+
 ' > .display.py
 python .display.py
 
