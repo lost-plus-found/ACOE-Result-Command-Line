@@ -1,5 +1,6 @@
 # ACOE Result Command Line Interface
-View ACOE Result from anywhere in the command line and <b>download the pdf</b> (<i>new feature</i>)
+View ACOE Result from anywhere in the command line and <b>download the result pdf</b>.
+<b>GPA is displayed for CS, IT &amp; EC</b> department (<i>new feature</i>)
 
 ## Preinstallations
 
