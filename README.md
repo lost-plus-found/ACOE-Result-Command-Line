@@ -1,13 +1,14 @@
-# ACOE Result on command line (View Result only)
-View ACOE Result from anywhere in the command line
+# ACOE Result Command Line Interface
+View ACOE Result from anywhere in the command line and <b>download the result pdf</b>.
+<b>GPA is displayed for CS, IT &amp; EC</b> department (<i>new feature</i>)
 
 ## Preinstallations
 
-$ `sudo apt -y install python-pip`
+$ `sudo apt install python-pip`
 
 $ `sudo pip install BeautifulSoup4`
 
-$ `sudo apt install python-prettytable`
+$ `sudo pip install prettytable`
 
 ## Installing
 
