@@ -37,14 +37,10 @@ if python -c "from bs4 import BeautifulSoup" 2> /dev/null; then
 	if python -c "from prettytable import PrettyTable" 2> /dev/null; then
 		echo "Please be patient..."
 	else
-		echo "Please run the following command"
-		echo "sudo apt-get install python-pip && sudo pip install prettytable"
-		exit 1;
+		sudo apt-get install python-pip && sudo pip install prettytable
 	fi
 else
-	echo "Please run the following command"
-	echo "sudo apt-get install python-pip && sudo pip install bs4"
-	exit 1;
+	sudo apt-get install python-pip && sudo pip install bs4
 fi
 
 echo 
