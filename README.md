@@ -2,14 +2,6 @@
 View ACOE Result from anywhere in the command line and <b>download the result pdf</b>.
 <b>GPA is displayed for CS, IT &amp; EC</b> department (<i>new feature</i>)
 
-## Preinstallations
-
-$ `sudo apt install python-pip`
-
-$ `sudo pip install BeautifulSoup4`
-
-$ `sudo pip install prettytable`
-
 ## Installing
 
 To download this repository, you may either clone via git:
