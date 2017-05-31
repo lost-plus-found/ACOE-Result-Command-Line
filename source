@@ -36,16 +36,12 @@ curl -s -b .c0.txt https://acoe.annauniv.edu/student/result.php > .temp
 if python -c "from bs4 import BeautifulSoup" 2> /dev/null; then
 	echo -n "."
 else
-	echo "Please run the following command"
-	echo "sudo apt-get install python-pip && sudo pip install bs4"
-	exit 1;
+	sudo apt-get install python-pip && sudo pip install bs4
 fi
 if python -c "from prettytable import PrettyTable" 2> /dev/null; then
 	echo -n "."
 else
-	echo "Please run the following command"
-	echo "sudo apt-get install python-pip && sudo pip install prettytable"
-	exit 1;
+	sudo apt-get install python-pip && sudo pip install prettytable
 fi
 
 echo 
